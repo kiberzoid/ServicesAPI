@@ -8,6 +8,31 @@
 
 You have to define the environment variable SERVICE_ROOT referring to your log directory.
 Logs are stored in SERVICE_ROOT/log/
+##### Run:
+- run package with maven
+```
+mvnw package -DskipTests
+```
+- start discovery-service
+```
+mvnw spring-boot:run -pl discovery-service
+```
+- start gateway-service
+```
+mvnw spring-boot:run -pl gateway-service
+```
+- start push-service
+```
+mvnw spring-boot:run -pl push-service
+```
+- start email-service
+```
+mvnw spring-boot:run -pl email-service
+```
+- start sms-service
+```
+mvnw spring-boot:run -pl sms-service
+```
 ##### Endpoints: 
 Send push notification:
 - ``http://localhost:9095/api/push/message``
