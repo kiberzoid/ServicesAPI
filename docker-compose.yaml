@@ -1,0 +1,58 @@
+version: '1'
+services:
+  discovery-service:
+    build:
+      context: ./discovery-service
+      dockerfile: Dockerfile
+    hostname: discovery-service
+  gateway-service:
+    build:
+      context: ./gateway-service
+      dockerfile: Dockerfile
+    hostname: gateway-service
+    depends_on:
+      - discovery-service
+    ports:
+      - '9095:9095'
+    environment:
+      - JAVA_OPTS=
+        - DEUREKA_SERVER=http://discovery-service:8761/eureka
+  push-service:
+    build:
+      context: ./push-service
+      dockerfile: Dockerfile
+    hostname: push-service
+    depends_on:
+      - gateway-service:
+    volumes:
+      - '${LOGS}:/opt/services/log/'
+    environment:
+      - SERVICE_ROOT=/opt/services/log/
+      - JAVA_OPTS=
+        - DEUREKA_SERVER=http://discovery-service:8761/eureka
+  sms-service:
+    build:
+      context: ./sms-service
+      dockerfile: Dockerfile
+    hostname: sms-service
+    depends_on:
+      - gateway-service:
+    volumes:
+      - '${LOGS}:/opt/services/log/'
+    environment:
+      - SERVICE_ROOT=/opt/services/log/
+      - JAVA_OPTS=
+        - DEUREKA_SERVER=http://discovery-service:8761/eureka
+  email-service:
+    build:
+      context: ./email-service
+      dockerfile: Dockerfile
+    hostname: email-service
+    depends_on:
+      - gateway-service:
+    volumes:
+      - '${LOGS}:/opt/services/log/'
+    environment:
+      - SERVICE_ROOT=/opt/services/log/
+      - JAVA_OPTS=
+        - DEUREKA_SERVER=http://discovery-service:8761/eureka
