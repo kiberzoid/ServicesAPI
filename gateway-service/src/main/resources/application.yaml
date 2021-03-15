@@ -1,0 +1,31 @@
+server:
+  port: 9095
+
+eureka:
+  instance:
+    hostname: gateway-service
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    eureka-server-port: 8761
+    serviceUrl:
+      defaultZone: http://localhost:${eureka.client.eureka-server-port}/eureka
+
+spring:
+  application:
+    name: gateway-service
+  cloud:
+    gateway:
+      routes:
+        - id: smsServ
+          uri: lb://SMS-SERVICE
+          predicates:
+            - Path=/api/sms/**
+        - id: emailServ
+          uri: lb://EMAIL-SERVICE
+          predicates:
+            - Path=/api/email/**
+        - id: pushServ
+          uri: lb://PUSH-SERVICE
+          predicates:
+            - Path=/api/push/**

@@ -1,0 +1,24 @@
+server:
+  port: 9091
+  servlet:
+    encoding:
+      enabled: true
+      charset: UTF-8
+      force: true
+
+eureka:
+  instance:
+    hostname: sms-service
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    eureka-server-port: 8761
+    serviceUrl:
+      defaultZone: http://localhost:${eureka.client.eureka-server-port}/eureka
+
+spring:
+  application:
+    name: sms-service
+  mvc:
+    servlet:
+      load-on-startup: 1

@@ -1,0 +1,19 @@
+server:
+  port: 9093
+  servlet:
+    encoding:
+      enabled: true
+      charset: UTF-8
+      force: true
+
+eureka:
+  client:
+    enabled: false
+
+spring:
+  application:
+    name: push-service
+  mvc:
+    servlet:
+      load-on-startup: 1
+

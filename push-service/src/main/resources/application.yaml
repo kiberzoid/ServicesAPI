@@ -1,0 +1,25 @@
+server:
+  port: 9093
+  servlet:
+    encoding:
+      enabled: true
+      charset: UTF-8
+      force: true
+
+eureka:
+  instance:
+    hostname: push-service
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    eureka-server-port: 8761
+    serviceUrl:
+      defaultZone: http://localhost:${eureka.client.eureka-server-port}/eureka
+
+spring:
+  application:
+    name: push-service
+  mvc:
+    servlet:
+      load-on-startup: 1
+

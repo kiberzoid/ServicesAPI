@@ -1,0 +1,19 @@
+server:
+  port: 9091
+  servlet:
+    encoding:
+      enabled: true
+      charset: UTF-8
+      force: true
+
+eureka:
+  client:
+    enabled: false
+
+spring:
+  application:
+    name: sms-service
+  mvc:
+    servlet:
+      load-on-startup: 1
+
