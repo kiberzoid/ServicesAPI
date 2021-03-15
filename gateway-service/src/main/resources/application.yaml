@@ -9,7 +9,7 @@ eureka:
     fetch-registry: true
     eureka-server-port: 8761
     serviceUrl:
-      defaultZone: http://localhost:${eureka.client.eureka-server-port}/eureka
+      defaultZone: ${EUREKA_SERVER:http://localhost:8761/eureka}
 
 spring:
   application:
