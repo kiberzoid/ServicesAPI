@@ -11,7 +11,7 @@ eureka:
     hostname: sms-service
   client:
     register-with-eureka: true
-    fetch-registry: true
+    fetch-registry: false
     eureka-server-port: 8761
     serviceUrl:
       defaultZone: http://discovery-service:8761/eureka

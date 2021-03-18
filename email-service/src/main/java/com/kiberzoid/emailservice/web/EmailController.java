@@ -2,7 +2,6 @@ package com.kiberzoid.emailservice.web;
 
 import com.kiberzoid.emailservice.model.Message;
 import com.kiberzoid.emailservice.service.EmailService;
-import com.kiberzoid.emailservice.util.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -24,7 +23,6 @@ public class EmailController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void sendMessage(@RequestPart("msg") @Valid Message msg,
                             @RequestPart(value = "attachment", required = false) List<MultipartFile> attachment) {
-        FileUtils.saveFile(attachment);
         msg.setAttachment(attachment);
         service.sendEmail(msg);
     }

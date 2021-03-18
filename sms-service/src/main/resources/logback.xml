@@ -16,11 +16,11 @@
         </encoder>
     </appender>
 
-    <logger name="com.mytask.smsservice.service.SmsService">
+    <logger name="com.kiberzoid.smsservice.service.SmsService">
         <appender-ref ref="FILE"/>
     </logger>
 
-    <logger name="com.mytask.smsservice.web.ExceptionInfoHandler">
+    <logger name="com.kiberzoid.smsservice.web.ExceptionInfoHandler">
         <appender-ref ref="FILE"/>
     </logger>
 

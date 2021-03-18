@@ -16,11 +16,11 @@
         </encoder>
     </appender>
 
-    <logger name="com.mytask.pushservice.service.PushService">
+    <logger name="com.kiberzoid.pushservice.service.PushService">
         <appender-ref ref="FILE"/>
     </logger>
 
-    <logger name="com.mytask.pushservice.web.ExceptionInfoHandler">
+    <logger name="com.kiberzoid.pushservice.web.ExceptionInfoHandler">
         <appender-ref ref="FILE"/>
     </logger>
 

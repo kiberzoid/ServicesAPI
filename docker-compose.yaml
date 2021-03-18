@@ -11,7 +11,9 @@ services:
       dockerfile: Dockerfile
     hostname: gateway-service
     depends_on:
-      - discovery-service
+      - email-service
+      - push-service
+      - sms-service
     ports:
       - '9095:9095'
   push-service:
@@ -20,7 +22,7 @@ services:
       dockerfile: Dockerfile
     hostname: push-service
     depends_on:
-      - gateway-service
+      - discovery-service
     volumes:
       - logs:/opt/services/log/
     environment:
@@ -31,7 +33,7 @@ services:
       dockerfile: Dockerfile
     hostname: sms-service
     depends_on:
-      - gateway-service
+      - discovery-service
     volumes:
       - logs:/opt/services/log/
     environment:
@@ -42,7 +44,7 @@ services:
       dockerfile: Dockerfile
     hostname: email-service
     depends_on:
-      - gateway-service
+      - discovery-service
     volumes:
       - logs:/opt/services/log/
     environment:
