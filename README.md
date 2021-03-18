@@ -1,41 +1,20 @@
 ## API for sending notification by sms, push or email
 ##### Components: 
-- discovery-service on port 8761
-- gateway-service on port 9095
-- email-service on port 9092
-- sms-service on port 9091
-- push-service on port 9093
+- discovery-service (port: 8761)
+- gateway-service (port: 9095)
+- email-service (port: 9092)
+- sms-service (port: 9091)
+- push-service (port: 9093)
 
-You have to define the environment variable SERVICE_ROOT referring to your log directory.
-Logs are stored in SERVICE_ROOT/log/
-##### Run:
-- run package with maven
+Logs are stored in ${SERVICE_ROOT}/log/
+##### Build & Run:
 ```
-mvnw package -DskipTests
-```
-- start discovery-service
-```
-mvnw spring-boot:run -pl discovery-service
-```
-- start gateway-service
-```
-mvnw spring-boot:run -pl gateway-service
-```
-- start push-service
-```
-mvnw spring-boot:run -pl push-service
-```
-- start email-service
-```
-mvnw spring-boot:run -pl email-service
-```
-- start sms-service
-```
-mvnw spring-boot:run -pl sms-service
+./mvnw clean package -DskipTests
+docker-compose up
 ```
 ##### Endpoints: 
 Send push notification:
-- ``http://localhost:9095/api/push/message``
+- ``http://{DOCKER_IP}:9095/api/push/message``
 - header ``Content-Type: application/json``
 - method ``POST``
 - body
@@ -52,7 +31,7 @@ Push Message{title=TOP NEWS, body=Military unit that conducts drone strikes boug
 ```
 
 Send sms notification:
-- ``http://localhost:9095/api/sms/message``
+- ``http://{DOCKER_IP}:9095/api/sms/message``
 - header ``Content-Type: application/json``
 - method ``POST``
 - body
@@ -68,7 +47,7 @@ SMS Message{destination=[79202909890, 79202909898], text=Balance notification} w
 ```
 
 Send email notification:
-- ``http://localhost:9095/api/email/message``
+- ``http://{DOCKER_IP}:9095/api/email/message``
 - header ``Content-Type: multipart/form-data``
 - method ``POST``
 - message's parts
@@ -89,4 +68,3 @@ Send email notification:
 ```
 Email Message{from=source@gmail.ru, destination=[dest2@gmail.ru, dest1@gmail.ru, dest3@gmail.ru], subject=Software Updates, text=How to manually update an app on your device} was sent
 ```
-- attachments are saved in the temporary directory (for example to %userprofile%\AppData\Local\Temp for Windows7)
