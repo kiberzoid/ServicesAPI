@@ -26,7 +26,7 @@ services:
     volumes:
       - logs:/opt/services/log/
     environment:
-      - SERVICE_ROOT=/opt/services/log/
+      - SERVICE_ROOT=/opt/services
   sms-service:
     build:
       context: ./sms-service
@@ -37,7 +37,7 @@ services:
     volumes:
       - logs:/opt/services/log/
     environment:
-      - SERVICE_ROOT=/opt/services/log/
+      - SERVICE_ROOT=/opt/services
   email-service:
     build:
       context: ./email-service
@@ -48,6 +48,6 @@ services:
     volumes:
       - logs:/opt/services/log/
     environment:
-      - SERVICE_ROOT=/opt/services/log/
-  volumes:
-    logs:
+      - SERVICE_ROOT=/opt/services
+volumes:
+  logs:

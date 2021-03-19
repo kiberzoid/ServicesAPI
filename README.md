@@ -6,7 +6,7 @@
 - sms-service (port: 9091)
 - push-service (port: 9093)
 
-Logs are stored in ${SERVICE_ROOT}/log/
+Logs are stored in /opt/services/log/
 ##### Build & Run:
 ```
 ./mvnw clean package -DskipTests
