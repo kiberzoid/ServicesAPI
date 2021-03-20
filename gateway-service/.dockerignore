@@ -1,0 +1,8 @@
+.mnv
+mnv*
+*.iml
+*.md
+src
+pom.xml
+!target/gateway-service.jar
+target

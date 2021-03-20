@@ -16,6 +16,7 @@ services:
       - sms-service
     ports:
       - '9095:9095'
+    entrypoint: ["/opt/services/wait-for","http://discovery-service:8761","-t","60","--","java","-jar","/opt/services/gateway-service.jar"]
   push-service:
     build:
       context: ./push-service
@@ -27,6 +28,7 @@ services:
       - logs:/opt/services/log/
     environment:
       - SERVICE_ROOT=/opt/services
+    entrypoint: ["/opt/services/wait-for","http://discovery-service:8761","-t","60","--","java","-jar","/opt/services/push-service.jar"]
   sms-service:
     build:
       context: ./sms-service
@@ -38,6 +40,7 @@ services:
       - logs:/opt/services/log/
     environment:
       - SERVICE_ROOT=/opt/services
+    entrypoint: ["/opt/services/wait-for","http://discovery-service:8761","-t","60","--","java","-jar","/opt/services/sms-service.jar"]
   email-service:
     build:
       context: ./email-service
@@ -49,5 +52,6 @@ services:
       - logs:/opt/services/log/
     environment:
       - SERVICE_ROOT=/opt/services
+    entrypoint: ["/opt/services/wait-for","http://discovery-service:8761","-t","60","--","java","-jar","/opt/services/email-service.jar"]
 volumes:
   logs:
