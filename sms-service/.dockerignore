@@ -1,8 +1,0 @@
-.mnv
-mnv*
-*.iml
-*.md
-src
-pom.xml
-!target/sms-service.jar
-target
