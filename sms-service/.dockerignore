@@ -1,0 +1,6 @@
+.mvn
+src
+target
+!target/sms-service.jar
+mvn*
+*.xml

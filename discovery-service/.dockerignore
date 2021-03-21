@@ -1,0 +1,6 @@
+.mvn
+src
+target
+!target/discovery-service.jar
+mvn*
+*.xml

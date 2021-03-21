@@ -1,0 +1,6 @@
+.mvn
+src
+target
+!target/push-service.jar
+mvn*
+*.xml
