@@ -57,7 +57,7 @@ class EmailServiceApplicationTests {
     @Test
     public void sendMessageWithoutMsg() throws Exception {
         MockMultipartFile mockFileAttachment = new MockMultipartFile("attachment", "manual.txt",
-                MediaType.TEXT_PLAIN_VALUE, "text inside manual".getBytes(StandardCharsets.UTF_8));
+                MediaType.MULTIPART_FORM_DATA_VALUE, "text inside manual".getBytes(StandardCharsets.UTF_8));
         mockMvc.perform(multipart(URL)
                 .file(mockFileAttachment))
                 .andDo(print())
@@ -72,6 +72,6 @@ class EmailServiceApplicationTests {
         mockMvc.perform(multipart(URL)
                 .file(mockFile))
                 .andDo(print())
-                .andExpect(status().isBadRequest());
+                .andExpect(status().isUnprocessableEntity());
     }
 }

@@ -43,6 +43,6 @@ class PushServiceApplicationTests {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(mapper.writeValueAsString(TestData.BAD_MSG)))
                 .andDo(print())
-                .andExpect(status().isBadRequest());
+                .andExpect(status().isUnprocessableEntity());
     }
 }
