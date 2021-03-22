@@ -8,6 +8,7 @@
 
 Logs are stored in /opt/services/log/
 ##### Build & Run:
+Use Java 8 or higher
 ```
 ./mvnw clean package -DskipTests
 docker-compose up
